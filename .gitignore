@@ -1,0 +1,8 @@
+generate-layout.local.sh
+layouts/claude-projects.yaml
+*.bak
+*.bak.*
+.DS_Store
+.omc/
+.claude/
+__pycache__/

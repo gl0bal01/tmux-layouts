@@ -1,0 +1,57 @@
+# osint.yaml — OSINT investigation layout
+# Launch: tmuxp load -y osint
+session_name: osint
+start_directory: ~/ops/osint
+windows:
+  - window_name: 🕵️ cockpit
+    focus: true
+    layout: tiled
+    panes:
+      - focus: true
+        shell_command:
+          - clear
+          - echo "target dossier — name, aliases, accounts, locations, leads"
+      - shell_command:
+          - clear
+          - echo "shell — primary"
+      - shell_command:
+          - watch -n 60 -c 'date +"%H:%M  %Y-%m-%d UTC%z"'
+      - shell_command:
+          - clear
+          - echo "evidence chain — sources, timestamps, hashes"
+
+  - window_name: 👤 identity
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "username — sherlock / whatsmyname / blackbird"]
+      - shell_command: [clear, echo "email — h8mail / holehe / epieos"]
+      - shell_command: [clear, echo "phone — phoneinfoga / numlookup"]
+      - shell_command: [clear, echo "name / face — pimeyes / google reverse"]
+
+  - window_name: 🌐 web
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "domain / whois / dns — amass / subfinder"]
+      - shell_command: [clear, echo "wayback — waybackmachine / archive.today"]
+      - shell_command: [clear, echo "search — google dorks / ddg / shodan"]
+      - shell_command: [clear, echo "site fetch — curl / httpie / wget"]
+
+  - window_name: 📡 social
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "twitter — twint / nitter / snscrape"]
+      - shell_command: [clear, echo "instagram — instaloader / osintgram"]
+      - shell_command: [clear, echo "linkedin / github — manual / osint-framework"]
+      - shell_command: [clear, echo "telegram / discord — tgscan / channel scrape"]
+
+  - window_name: 🗺️ geo
+    layout: even-horizontal
+    panes:
+      - shell_command: [clear, echo "geoint — overpass-turbo / mapillary / google earth"]
+      - shell_command: [clear, echo "exif — exiftool / metadata"]
+
+  - window_name: 📝 report
+    layout: even-horizontal
+    panes:
+      - shell_command: [clear, echo "report draft — markdown / maltego export"]
+      - shell_command: [clear, echo "screenshots / archived sources"]

@@ -1,0 +1,36 @@
+# docker.yaml — Docker / Compose workflow layout
+# Launch: tmuxp load -y docker
+session_name: docker
+start_directory: ~/docker
+windows:
+  - window_name: 🐳 cockpit
+    focus: true
+    layout: tiled
+    panes:
+      - focus: true
+        shell_command:
+          - clear
+          - echo "compose pane — docker compose up / down / logs"
+      - shell_command:
+          - watch -n 3 -c 'docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" 2>/dev/null || echo "docker not running"'
+      - shell_command:
+          - watch -n 5 -c 'docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" 2>/dev/null'
+      - shell_command:
+          - clear
+          - echo "exec / shell into containers here"
+
+  - window_name: 📜 logs
+    layout: even-horizontal
+    panes:
+      - shell_command:
+          - clear
+          - echo "docker logs -f <container>"
+      - shell_command:
+          - clear
+          - echo "docker compose logs -f"
+
+  - window_name: 🧪 scratch
+    layout: even-horizontal
+    panes:
+      - shell_command: [clear]
+      - shell_command: [clear]

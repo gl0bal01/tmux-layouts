@@ -1,0 +1,64 @@
+# ctf.yaml — CTF competition workflow
+# Launch: tmuxp load -y ctf
+# Mirrors zellij-layouts/ctf.kdl 1:1 (cockpit/web/pwn/crypto/forensics/misc)
+session_name: ctf
+start_directory: ~/ops/ctf
+windows:
+  - window_name: 🏁 cockpit
+    focus: true
+    layout: tiled
+    panes:
+      - focus: true
+        shell_command:
+          - clear
+          - echo "Challenge tracker — name, category, points, status"
+      - shell_command:
+          - clear
+          - echo "Flag log — echo 'FLAG{...}' >> flags.txt"
+      - shell_command:
+          - watch -n 60 -c 'date +"%H:%M  %Y-%m-%d"'
+      - shell_command:
+          - clear
+          - echo "Submit — curl flag / platform CLI"
+
+  - window_name: 🌐 web
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "requests — curl / httpie / sqlmap / ffuf / feroxbuster"]
+      - shell_command: [clear, echo "source — page source / JS / API responses"]
+      - shell_command: [clear, echo "proxy — mitmproxy / burp CLI / caido"]
+      - shell_command: [clear, echo "exploit — XSS / SQLi / SSTI / deserialization"]
+
+  - window_name: 💥 pwn
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "debugger — gdb -q ./binary  (pwndbg/gef/peda)"]
+      - shell_command: [clear, echo "disasm — objdump -d / radare2 / ghidra headless / cutter"]
+      - shell_command: [clear, echo "exploit — python3 exploit.py  (pwntools)"]
+      - shell_command: [clear, echo "checksec — checksec ./binary / ropper / ROPgadget / one_gadget"]
+
+  - window_name: 🔐 crypto
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "python3 / ipython / sage — pycryptodome/sympy/gmpy2/z3"]
+      - shell_command:
+          - clear
+          - 'echo "edit solve.py — ${EDITOR:-vim} solve.py"'
+      - shell_command: [clear, echo "tools — CyberChef CLI / dcode / factordb / RsaCtfTool"]
+      - shell_command: [clear]
+
+  - window_name: 🔎 forensics
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "analyze — file / binwalk / foremost / volatility3 / exiftool / oletools"]
+      - shell_command: [clear, echo "hex — xxd / hexyl / strings / entropy"]
+      - shell_command: [clear, echo "carve — steghide / zsteg / stegsolve / openstego"]
+      - shell_command: [clear, echo "pcap — tshark / tcpdump -r / NetworkMiner"]
+
+  - window_name: 🧰 misc
+    layout: tiled
+    panes:
+      - shell_command: [clear, echo "general solve pane"]
+      - shell_command: [clear, echo "recon — sherlock / theHarvester / exiftool"]
+      - shell_command: [clear, echo "decode — base64 / rot13 / CyberChef / dcode"]
+      - shell_command: [clear]

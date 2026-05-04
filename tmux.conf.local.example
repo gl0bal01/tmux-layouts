@@ -1,0 +1,22 @@
+# ~/.tmux.conf.local
+# Personal overrides. Copy this file to ~/.tmux.conf.local and customize.
+# Sourced from ~/.tmux.conf before plugin init, so it can set @-options.
+
+# Catppuccin flavour — mocha (default), macchiato, frappe, latte
+# set -g @catppuccin_flavour 'macchiato'
+
+# Status bar position
+# set -g status-position top
+
+# Custom window navigation
+# bind -n M-h previous-window
+# bind -n M-l next-window
+
+# Faster pane resize
+# bind -r H resize-pane -L 5
+# bind -r J resize-pane -D 5
+# bind -r K resize-pane -U 5
+# bind -r L resize-pane -R 5
+
+# Disable continuum auto-restore
+# set -g @continuum-restore 'off'

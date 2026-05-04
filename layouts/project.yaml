@@ -1,0 +1,19 @@
+# project.yaml — single-project focused layout
+# Launch: tmuxp load -y project
+# Override cwd: tmuxp load -y project --start-directory ~/projects/my-app
+session_name: project
+start_directory: ~/projects
+windows:
+  - window_name: workspace
+    focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: "70%"
+    panes:
+      - focus: true
+        shell_command:
+          - clear
+      - shell_command:
+          - watch -n 5 -c 'git status -sb 2>/dev/null || echo "no git repo"'
+      - shell_command:
+          - clear
