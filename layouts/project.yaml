@@ -12,8 +12,11 @@ windows:
     panes:
       - focus: true
         shell_command:
-          - clear
+          - tmux select-pane -t "$TMUX_PANE" -T "claude"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "claude — main workspace"
       - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "git"
           - watch -n 5 -c 'git status -sb 2>/dev/null || echo "no git repo"'
       - shell_command:
-          - clear
+          - tmux select-pane -t "$TMUX_PANE" -T "shell"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "shell / logs"

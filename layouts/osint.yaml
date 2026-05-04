@@ -9,49 +9,82 @@ windows:
     panes:
       - focus: true
         shell_command:
-          - clear
-          - echo "target dossier — name, aliases, accounts, locations, leads"
+          - tmux select-pane -t "$TMUX_PANE" -T "dossier"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "dossier — name · aliases · accounts · locations · leads"
       - shell_command:
-          - clear
-          - echo "shell — primary"
+          - tmux select-pane -t "$TMUX_PANE" -T "shell"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "shell — primary"
       - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "clock"
           - watch -n 60 -c 'date +"%H:%M  %Y-%m-%d UTC%z"'
       - shell_command:
-          - clear
-          - echo "evidence chain — sources, timestamps, hashes"
+          - tmux select-pane -t "$TMUX_PANE" -T "evidence"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "evidence chain — sources · timestamps · hashes"
 
   - window_name: 👤 identity
     layout: tiled
     panes:
-      - shell_command: [clear, echo "username — sherlock / whatsmyname / blackbird"]
-      - shell_command: [clear, echo "email — h8mail / holehe / epieos"]
-      - shell_command: [clear, echo "phone — phoneinfoga / numlookup"]
-      - shell_command: [clear, echo "name / face — pimeyes / google reverse"]
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "username"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "username — sherlock · whatsmyname · blackbird"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "email"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "email — h8mail · holehe · epieos"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "phone"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "phone — phoneinfoga · numlookup"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "face"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "name / face — pimeyes · google reverse"
 
   - window_name: 🌐 web
     layout: tiled
     panes:
-      - shell_command: [clear, echo "domain / whois / dns — amass / subfinder"]
-      - shell_command: [clear, echo "wayback — waybackmachine / archive.today"]
-      - shell_command: [clear, echo "search — google dorks / ddg / shodan"]
-      - shell_command: [clear, echo "site fetch — curl / httpie / wget"]
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "domain"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "domain · whois · dns — amass · subfinder"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "wayback"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "wayback — waybackmachine · archive.today"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "search"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "search — google dorks · ddg · shodan"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "fetch"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "site fetch — curl · httpie · wget"
 
   - window_name: 📡 social
     layout: tiled
     panes:
-      - shell_command: [clear, echo "twitter — twint / nitter / snscrape"]
-      - shell_command: [clear, echo "instagram — instaloader / osintgram"]
-      - shell_command: [clear, echo "linkedin / github — manual / osint-framework"]
-      - shell_command: [clear, echo "telegram / discord — tgscan / channel scrape"]
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "twitter"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "twitter — twint · nitter · snscrape"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "instagram"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "instagram — instaloader · osintgram"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "linkedin/gh"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "linkedin / github — osint-framework"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "telegram"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "telegram / discord — tgscan · channel scrape"
 
   - window_name: 🗺️ geo
     layout: even-horizontal
     panes:
-      - shell_command: [clear, echo "geoint — overpass-turbo / mapillary / google earth"]
-      - shell_command: [clear, echo "exif — exiftool / metadata"]
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "geoint"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "geoint — overpass-turbo · mapillary · google earth"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "exif"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "exif — exiftool · metadata"
 
   - window_name: 📝 report
     layout: even-horizontal
     panes:
-      - shell_command: [clear, echo "report draft — markdown / maltego export"]
-      - shell_command: [clear, echo "screenshots / archived sources"]
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "report"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "report draft — markdown · maltego export"
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "evidence"
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "screenshots · archived sources"

@@ -34,11 +34,14 @@ emit_log_pane() {
   if [[ -n "$logfile" ]]; then
     cat <<EOF
       - shell_command:
+          - tmux select-pane -t "\$TMUX_PANE" -T $(yaml_q "logs — $logfile")
           - tail -f $(yaml_q "$logfile")
 EOF
   else
     cat <<EOF
-      - shell_command: [clear]
+      - shell_command:
+          - tmux select-pane -t "\$TMUX_PANE" -T 'shell'
+          - printf '\\e[H\\e[2J\\e[2;36m▎ %s\\e[0m\\n\\n' 'shell'
 EOF
   fi
 }
@@ -56,20 +59,24 @@ windows:
 HEADER
 
 # ── Cockpit window ─────────────────────────────────────────────────
-cat <<COCKPIT
+cat <<'COCKPIT'
   - window_name: 🏠 cockpit
     focus: true
     layout: tiled
     panes:
       - focus: true
         shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T 'btop'
           - btop
       - shell_command:
-          - clear
+          - tmux select-pane -t "$TMUX_PANE" -T 'shell'
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' 'shell'
       - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T 'ccusage'
           - bunx ccusage daily --instances --compact
       - shell_command:
-          - clear
+          - tmux select-pane -t "$TMUX_PANE" -T 'shell'
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' 'shell'
 COCKPIT
 
 # ── Project windows ────────────────────────────────────────────────
@@ -85,8 +92,10 @@ for entry in "${projects[@]}"; do
     panes:
       - focus: true
         shell_command:
-          - clear
+          - tmux select-pane -t "\$TMUX_PANE" -T 'claude'
+          - printf '\\e[H\\e[2J\\e[2;36m▎ %s\\e[0m\\n\\n' $(yaml_q "claude — $label")
       - shell_command:
+          - tmux select-pane -t "\$TMUX_PANE" -T 'git'
           - watch -n 5 -c 'git status -sb 2>/dev/null || echo "no git repo"'
 $(emit_log_pane "$logfile")
 EOF
@@ -97,6 +106,10 @@ cat <<'FOOTER'
   - window_name: 🧪 scratch
     layout: even-horizontal
     panes:
-      - shell_command: [clear]
-      - shell_command: [clear]
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T 'scratch'
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' 'scratch'
+      - shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T 'scratch'
+          - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' 'scratch'
 FOOTER
