@@ -16,9 +16,6 @@ windows:
           - tmux select-pane -t "$TMUX_PANE" -T "flags"
           - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "flag log — echo 'FLAG{...}' >> flags.txt"
       - shell_command:
-          - tmux select-pane -t "$TMUX_PANE" -T "clock"
-          - watch -n 60 -c 'date +"%H:%M  %Y-%m-%d"'
-      - shell_command:
           - tmux select-pane -t "$TMUX_PANE" -T "submit"
           - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "submit — curl flag · platform CLI"
 

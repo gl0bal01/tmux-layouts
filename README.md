@@ -111,7 +111,7 @@ tdk-new my-stack            # creates ~/docker/my-stack, session "dk-my-stack"
 
 | Window | Pane titles |
 |---|---|
-| `🐳 cockpit` | `compose` · `ps` (live) · `images` (live) · `exec` |
+| `🐳 cockpit` | `lazydocker` (auto-detect, falls back to `watch docker ps`) · `compose` · `exec` |
 | `📜 logs` | `logs` · `compose logs` |
 | `🧪 scratch` | `scratch` · `scratch` |
 
@@ -124,7 +124,7 @@ tpt-new acme-corp           # creates ~/ops/pentest/acme-corp, session "pt-acme-
 
 | Window | Pane titles |
 |---|---|
-| `🎯 cockpit` | `notes` · `shell` · `clock` · `loot` |
+| `🎯 cockpit` | `notes` · `shell` · `loot` |
 | `🔎 recon` | `scan` · `subdomains` · `fuzz` · `probe` |
 | `💥 exploit` | `msf` · `payload` · `listener` · `target` |
 | `🔓 post` | `privesc` · `lateral` · `persist` · `exfil` |
@@ -154,7 +154,7 @@ tos-new target-co           # creates ~/ops/osint/target-co, session "os-target-
 
 | Window | Pane titles |
 |---|---|
-| `🕵️ cockpit` | `dossier` · `shell` · `clock` · `evidence` |
+| `🕵️ cockpit` | `dossier` · `shell` · `evidence` |
 | `👤 identity` | `username` · `email` · `phone` · `face` |
 | `🌐 web` | `domain` · `wayback` · `search` · `fetch` |
 | `📡 social` | `twitter` · `instagram` · `linkedin/gh` · `telegram` |
@@ -170,7 +170,7 @@ tctf-new htb-apocalypse     # creates ~/ops/ctf/htb-apocalypse, session "ctf-htb
 
 | Window | Pane titles |
 |---|---|
-| `🏁 cockpit` | `tracker` · `flags` · `clock` · `submit` |
+| `🏁 cockpit` | `tracker` · `flags` · `submit` |
 | `🌐 web` | `requests` · `source` · `proxy` · `exploit` |
 | `💥 pwn` | `gdb` · `disasm` · `pwntools` · `gadgets` |
 | `🔐 crypto` | `repl` · `solve.py` · `tools` · `scratch` |

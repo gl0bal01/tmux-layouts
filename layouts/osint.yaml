@@ -15,9 +15,6 @@ windows:
           - tmux select-pane -t "$TMUX_PANE" -T "shell"
           - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "shell — primary"
       - shell_command:
-          - tmux select-pane -t "$TMUX_PANE" -T "clock"
-          - watch -n 60 -c 'date +"%H:%M  %Y-%m-%d UTC%z"'
-      - shell_command:
           - tmux select-pane -t "$TMUX_PANE" -T "evidence"
           - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "evidence chain — sources · timestamps · hashes"
 

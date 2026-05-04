@@ -5,18 +5,17 @@ start_directory: ~/docker
 windows:
   - window_name: 🐳 cockpit
     focus: true
-    layout: tiled
+    layout: main-vertical
+    options:
+      main-pane-width: 60%
     panes:
       - focus: true
         shell_command:
+          - tmux select-pane -t "$TMUX_PANE" -T "lazydocker"
+          - 'if command -v lazydocker >/dev/null 2>&1; then lazydocker; else watch -n 3 -c ''docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" 2>/dev/null || echo "docker not running"''; fi'
+      - shell_command:
           - tmux select-pane -t "$TMUX_PANE" -T "compose"
           - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "compose — docker compose up · down · logs"
-      - shell_command:
-          - tmux select-pane -t "$TMUX_PANE" -T "ps"
-          - watch -n 3 -c 'docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" 2>/dev/null || echo "docker not running"'
-      - shell_command:
-          - tmux select-pane -t "$TMUX_PANE" -T "images"
-          - watch -n 5 -c 'docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}" 2>/dev/null'
       - shell_command:
           - tmux select-pane -t "$TMUX_PANE" -T "exec"
           - printf '\e[H\e[2J\e[2;36m▎ %s\e[0m\n\n' "exec / shell into containers"
